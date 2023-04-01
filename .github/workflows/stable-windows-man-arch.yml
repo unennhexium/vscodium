@@ -33,13 +33,6 @@ jobs:
         shell: bash
     env:
       VSCODE_ARCH: ${{ github.event.inputs.vscode_arch }}
-    strategy:
-      fail-fast: false
-      matrix:
-        vscode_arch:
-          - x64
-          - ia32
-          - arm64
     outputs:
       RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
       SHOULD_DEPLOY: ${{ env.SHOULD_DEPLOY }}
