@@ -16,6 +16,14 @@ on:
           - ia32
           - arm64
         description: Target architeture
+      runner_type:
+        type: choice
+        options:
+          - self-hosted
+          - windows-2019
+          - ubuntu-latest
+        description: Type of the build runner
+
 
 env:
   APP_NAME: VSCodium
@@ -27,7 +35,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: ${{ github.event.inputs.runner_type }}
     defaults:
       run:
         shell: bash
