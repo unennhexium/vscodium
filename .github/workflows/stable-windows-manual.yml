@@ -74,6 +74,15 @@ jobs:
         run: ./check_tags.sh
         if: env.SHOULD_DEPLOY == 'yes'
 
+      - name: Build Icons
+        env:
+          SRC_PREFIX: src/
+          VSCODE_PREFIX: vscodium/
+        run: >
+          source ./icons/build_icons.sh &&
+          build_windows_main &&
+          build_windows_types
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
